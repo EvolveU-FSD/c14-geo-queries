@@ -74,3 +74,10 @@ export async function findParkingZoneInBoundingBox(northLat, eastLon, southLat, 
         })
     return equipment
 }
+
+export async function findParkingZoneInArea(searchArea) {
+    const zone = await ParkingZone.find()
+        .where('line')
+        .within(searchArea)
+    return zone
+}
